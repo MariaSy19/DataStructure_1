@@ -25,7 +25,9 @@ int main()
             cout << "4.Remove From First. \n";
             cout << "5.Remove From last. \n";
             cout << "6.Remove From Key. \n";
-            cout << "7.Exist.\n";
+            cout << "7.Revers linked List.\n";
+            cout << "8.Search an item.\n";
+            cout << "9.Exist.\n";
             cout << "Input what you want: \n";
             cin >> choice;
             switch (choice) {
@@ -76,13 +78,27 @@ int main()
                     link.print();
                     break;
                 case 7:
+                    cout << "The Linked list before reversed: \n";
+                    link.print();
+                    link.reverse();
+                    cout << "--Reversed List--\n";
+                    link.print();
+                    break;
+                case 8:
+                    cout << "Input the item want to search its: \n";
+                    cin >> item;
+                    link.search(item);
+                    cout << "--the values in the linked list--\n";
+                    link.print();
+                    break;
+                case 9:
                     exit(0);
                     break;
                 default:
                     cout << "Invalid choice. Please try again." << endl;
                     break;
             }
-        } while (choice != 6);
+        } while (choice != 8);
 
 
 

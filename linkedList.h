@@ -24,6 +24,8 @@ public:
     void RemoveAtFirst();
     void RemoveAtLast();
     void RemoveKey(const T& element);
+    void reverse();
+    void search(const T& element);
     void print();
 };
 
@@ -186,6 +188,38 @@ void linkedList<T>::RemoveKey(const T& element)
     if (isEmpty()) last = nullptr;
 }
 
+template<typename T>
+void linkedList<T>::reverse()
+{
+    Node *prev, *curr, *next;
+    prev = nullptr;
+    curr = first;
+    next = curr->next;
+    while (next != nullptr)//mean when we don't reach to the end of the linked list
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    first = prev;
+}
+
+template<typename T>
+void  linkedList<T>::search(const T &element)
+{
+    Node *curr;
+    curr= first;
+    int pos = 0;
+    while (curr != nullptr)
+    {
+        if (curr->item == element)
+            cout << "The element "<<element<<"in the Node =>"  <<pos <<endl;
+        curr = curr->next;
+        pos++;
+    }
+    cout << "Not Found\n";
+}
 template<typename T>
 void linkedList<T>::print() {
     Node* cur = first;
