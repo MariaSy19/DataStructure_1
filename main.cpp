@@ -1,7 +1,9 @@
 #include <iostream>
 #include "linkedList.h"
 using namespace std;
-int main() {
+int main()
+{
+    //Sll
     linkedList<int >link;
     link.insertFirst(10);
     link.insertLast(9);
@@ -13,6 +15,9 @@ int main() {
     link.print();
     cout << "After Remove the first Node in the linked list: \n";
     link.RemoveAtFirst();
+    link.print();
+    cout << "After Remove the last Node in the linked list: \n";
+    link.RemoveAtLast();
     link.print();
     return 0;
 }

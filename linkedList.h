@@ -22,6 +22,7 @@ public:
     void insertLast(const T& element);
     void insertAtPos(int pos, const T& item);
     void RemoveAtFirst();
+    void RemoveAtLast();
     void print();
 };
 
@@ -120,6 +121,32 @@ void linkedList<T>::RemoveAtFirst()
     }
 }
 
+template<typename T>
+void linkedList<T>::RemoveAtLast()
+{
+    Node *curr = first->next; // we need this pointer for refer to the last node
+    Node *prev = first; // we need this pointer for refer to the node before the last node ('curr pointer')
+    if (length == 0) //if the linked list is empty don't have any nodes
+    {
+        return;
+    } else if (length == 1) // if the linked list have only one node in the linked list
+    {
+        delete first;
+        first = last = nullptr;
+        length--;
+    } else
+    {
+        while (curr != last) // if the linked list have a  many nodes
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+        delete curr;
+        prev->next = nullptr; //because the prev pointer become the last node after delete the curr pointer
+        last = prev; //the last pointer become prev pointer
+        length--;
+    }
+}
 template<typename T>
 void linkedList<T>::print() {
     Node* cur = first;
