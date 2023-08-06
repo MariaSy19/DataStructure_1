@@ -23,6 +23,7 @@ public:
     void insertAtPos(int pos, const T& item);
     void RemoveAtFirst();
     void RemoveAtLast();
+    void RemoveKey(const T& element);
     void print();
 };
 
@@ -147,6 +148,44 @@ void linkedList<T>::RemoveAtLast()
         length--;
     }
 }
+
+template<typename T>
+void linkedList<T>::RemoveKey(const T& element)
+{
+    if (isEmpty()) return; // If the list is empty
+
+    Node* curr = first;
+    Node* prev = nullptr;
+
+    // Check if the element is in the head
+    while (curr != nullptr && curr->item == element)
+    {
+        first = curr->next;
+        delete curr;
+        curr = first;
+        length--;
+    }
+
+    // Check if the element is in the middle or tail
+    while (curr != nullptr)
+    {
+        while (curr != nullptr && curr->item != element)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+        if (curr == nullptr) break; // Element not found
+        prev->next = curr->next;
+        if (last == curr) last = prev; // Update last pointer if necessary
+        delete curr;
+        curr = prev->next;
+        length--;
+    }
+
+    // If the list became empty, update the last pointer
+    if (isEmpty()) last = nullptr;
+}
+
 template<typename T>
 void linkedList<T>::print() {
     Node* cur = first;

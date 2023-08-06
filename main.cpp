@@ -8,7 +8,7 @@ int main()
     int sz , items , item, index;
     cout << "what the size of list you want: \n";
     cin >> sz;
-    
+
     for (int i = 0; i < sz; ++i)
     {
         cout << "Input the value: \n";
@@ -35,6 +35,7 @@ int main()
                     link.insertFirst(item);
                     cout << "--Insert At First--\n";
                     link.print();
+                    sz++;
                     break;
                 case 2:
                     cout << "Input the item want to add in the linked list: \n";
@@ -42,6 +43,7 @@ int main()
                     link.insertLast(item);
                     cout << "--Insert At Last--\n";
                     link.print();
+                    sz++;
                     break;
                 case 3:
                     cout << "Input the item want to add in the linked list: \n";
@@ -51,18 +53,29 @@ int main()
                     link.insertAtPos(index, item);
                     cout << "--Insert At Position--\n";
                     link.print();
+                    sz++;
                     break;
                 case 4:
                     link.RemoveAtFirst();
                     cout << "--Delete At First--\n";
                     link.print();
+                    sz--;
                     break;
                 case 5:
                     link.RemoveAtLast();
                     cout << "--Delete At Last--\n";
                     link.print();
+                    sz--;
                     break;
                 case 6:
+
+                    cout << "Input the item want to delete form the linked list: \n";
+                    cin >> item;
+                    link.RemoveKey(item);
+                    cout << "--Delete Element--\n";
+                    link.print();
+                    break;
+                case 7:
                     exit(0);
                     break;
                 default:
