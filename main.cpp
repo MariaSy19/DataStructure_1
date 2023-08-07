@@ -1,22 +1,44 @@
 #include <iostream>
 #include "linkedList.h"
+#include "DLL.h"
 using namespace std;
 int main()
 {
     //Sll
     linkedList<int> link ;
+    //DLL
+    DLL<int> DLink;
     int sz , items , item, index;
+    int typeLL;
     cout << "what the size of list you want: \n";
     cin >> sz;
-
+    cout << "What Kind of Linked list you want: \n";
+    cout << "1.SLL. \n";
+    cout << "2.DLL. \n";
+    cin >> typeLL;
+    while (typeLL != 1 && typeLL != 2 )
+    {
+        cout << "What Kind of Linked list you want: \n";
+        cout << "1.SLL. \n";
+        cout << "2.DLL. \n";
+        cin >> typeLL;
+    }
     for (int i = 0; i < sz; ++i)
     {
         cout << "Input the value: \n";
         cin >> items;
-        link.insertLast(items);
-    }
-    int choice ;
+        if (typeLL == 1)
+        {
+            link.insertLast(items);
+        } else if (typeLL == 2)
+        {
+            DLink.isertAtFirst(items);
+        }
 
+    }
+
+    int choice = 0;
+    if (typeLL == 1) {
         do {
             cout << "----SLL----" << endl;
             cout << "1.Insert At First. \n";
@@ -93,15 +115,35 @@ int main()
                     break;
                 case 9:
                     exit(0);
-                    break;
                 default:
                     cout << "Invalid choice. Please try again." << endl;
                     break;
             }
         } while (choice != 8);
 
-
-
+    } else if (typeLL == 2)
+    {
+        cout << "----DLL----" << endl;
+        cout << "1.Insert At First. \n";
+        cout << "2.Exist.\n";
+        cout << "Input what you want: \n";
+        cin >> choice;
+        switch (choice)
+        {
+            case 1:
+                cout << "Input the item want to add in the linked list: \n";
+                cin >> item;
+                DLink.isertAtFirst(item);
+                cout << "--Insert At First--\n";
+                sz++;
+                break;
+            case 2:
+                exit(0);
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+                break;
+        }
+    } while (choice != 2);
 
     return 0;
 }
