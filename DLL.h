@@ -11,13 +11,30 @@ class DLL
         Node *prev;
     };
     Node *head, *tail;
-    int length = 0;
+    int length ;
 public:
-    void isertAtFirst(const T& item);
+    DLL();
+    void insertAtFirst(const T& item);
+    void print();
+    void insertAtTail(const T& item);
+    bool  isEmpty();
 };
 
 template<typename T>
-void DLL<T>::isertAtFirst(const T &item)
+DLL<T>::DLL()
+{
+    head = nullptr;
+    tail = nullptr;
+    length = 0;
+}
+
+template<typename T>
+bool  DLL<T>::isEmpty()
+{
+    return (head == 0);
+}
+template<typename T>
+void DLL<T>::insertAtFirst(const T &item)
 {
     Node *newNode = new Node;//create a new node in a LL
     newNode->itme = item; // put the item you entered a new node
@@ -33,6 +50,37 @@ void DLL<T>::isertAtFirst(const T &item)
         head = newNode;
     }
     length++;
-
 }
+
+template<typename T>
+void DLL<T>::print()
+{
+    Node* cur = head;
+    while (cur != nullptr)
+    {
+        cout << cur->item << " ";
+        cur = cur->next;
+    }
+    cout << endl;
+}
+
+template<typename T>
+void DLL<T>::insertAtTail(const T &item)
+{
+    Node *newNode = new Node;
+    newNode->itme = item;
+    if (length == 0)
+    {
+        head = tail = newNode;
+        newNode->next = newNode->prev = nullptr;
+    } else
+    {
+        newNode->next = nullptr;
+        newNode->prev = tail;
+        tail->next = newNode;
+        tail = newNode;
+    }
+    length++;
+}
+
 #endif //UNTITLED27_DLL_H

@@ -32,7 +32,7 @@ int main()
             link.insertLast(items);
         } else if (typeLL == 2)
         {
-            DLink.isertAtFirst(items);
+            DLink.insertAtTail(items);
         }
 
     }
@@ -125,7 +125,8 @@ int main()
     {
         cout << "----DLL----" << endl;
         cout << "1.Insert At First. \n";
-        cout << "2.Exist.\n";
+        cout << "2.Insert At Last. \n";
+        cout << "3.Exist.\n";
         cout << "Input what you want: \n";
         cin >> choice;
         switch (choice)
@@ -133,17 +134,26 @@ int main()
             case 1:
                 cout << "Input the item want to add in the linked list: \n";
                 cin >> item;
-                DLink.isertAtFirst(item);
+                DLink.insertAtFirst(item);
                 cout << "--Insert At First--\n";
+                DLink.print();
                 sz++;
                 break;
             case 2:
+                cout << "Input the item want to add in the linked list: \n";
+                cin >> item;
+                DLink.insertAtTail(item);
+                cout << "--Insert At Last--\n";
+                DLink.print();
+                sz++;
+                break;
+            case 3:
                 exit(0);
             default:
                 cout << "Invalid choice. Please try again." << endl;
                 break;
         }
-    } while (choice != 2);
+    } while (choice != 3);
 
     return 0;
 }
