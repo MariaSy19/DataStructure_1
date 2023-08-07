@@ -17,6 +17,10 @@ public:
     void insertAtFirst(const T& item);
     void print();
     void insertAtTail(const T& item);
+    void insertAtPos(int pos, const T& item);
+    void removeAtFirst();
+    void removeAtLast();
+    void removeKey();
     bool  isEmpty();
 };
 
@@ -81,6 +85,89 @@ void DLL<T>::insertAtTail(const T &item)
         tail = newNode;
     }
     length++;
+}
+
+template<typename T>
+void DLL<T>::insertAtPos(int pos, const T &item)
+{
+    if (pos < 0 || pos > length)
+    {
+        cout << "Invalid! pos. Out of the Range.\n";
+        return;
+    }
+    Node *newNode = new Node;
+    newNode->itme = item;
+    if (length == 0)
+    {
+        insertAtFirst(item);
+        length++;
+    } else if (pos == length )
+    {
+        insertAtTail(item);
+        length++;
+    } else
+    {
+        Node *curr;
+        newNode->next = curr->next; //in this line the new node.next refer to the next node but the curr still refer to the same node of the new node refer to it
+        newNode->prev = curr;//in this line the new node.prev refer to the prev node but the curr still refer to the same node of the new node refer to it
+        curr->next = newNode; // in this line cut the link between a curr node and the next node of the new node and become the curr node.next refer to new node
+        curr->next->prev = newNode;// in this line cut the link between a curr node and the next node of the new node and become the next node.prev refer to new node
+        length++;
+    }
+}
+
+template<typename T>
+void DLL<T>::removeAtFirst()
+{
+    //in the first case we make a check if the LL is empty
+    if (length == 0)
+    {
+        cout << "Empty List.\n";
+        return;
+    }
+    // in the second case if we have just one element
+    else if (length == 1)
+    {
+        delete head; //delete the head
+        tail = head = nullptr; // become tail and tail equal null
+    }
+    // in third case we have many node in LL
+    else
+    {
+        Node *curr = head;
+        head = head->next;
+        head->prev = nullptr;
+        delete curr; // delete the first node in the ll
+    }
+    length--;
+}
+
+template<typename T>
+void DLL<T>::removeAtLast()
+{
+    //the first case if the LL is empty
+    if (length == 0)
+    {
+        cout << "The Linked List is empty.\n";
+        return;
+    } else if (length == 1) //second case if the LL have just only one
+    {
+        delete head;
+        tail = head = nullptr;
+    } else //the third case
+    {
+        Node *curr = tail;
+        tail = tail->prev;
+        tail->next = nullptr;
+        delete curr;
+    }
+    length--;
+}
+
+template<typename T>
+void DLL<T>::removeKey()
+{
+
 }
 
 #endif //UNTITLED27_DLL_H
