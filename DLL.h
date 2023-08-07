@@ -20,7 +20,8 @@ public:
     void insertAtPos(int pos, const T& item);
     void removeAtFirst();
     void removeAtLast();
-    void removeKey();
+    void removeKey(const T& item);
+    void reverseDisplay();
     bool  isEmpty();
 };
 
@@ -165,9 +166,54 @@ void DLL<T>::removeAtLast()
 }
 
 template<typename T>
-void DLL<T>::removeKey()
+void DLL<T>::removeKey(const T& item)
 {
+    //If LL is empty
+    if (length == 0)
+    {
+        cout << "Empty List Can't remove. \n";
+        return;
+    } else if (head->itme == item ) //in this case if the item in the first node
+    {
+        removeAtFirst();
+    } else
+    {
+        Node *curr = head->next;
+        while (curr != nullptr)
+        {
+            if (curr->itme == item)
+            {
+                break;
+            }
+            curr = curr->next;
+        }
+        if (curr == nullptr)
+        {
+            cout << "The item isn't there. \n";
+            return;
+        } else if (curr->next == nullptr) // in this case the item in the last node
+        {
+            removeAtLast();
+        } else //if the element in the middle
+        {
+            curr->prev->next = curr->next;
+            curr->next->prev = curr->prev;
+            delete curr;
+            length--;
+        }
+    }
+}
 
+template<typename T>
+void DLL<T>::reverseDisplay()
+{
+    Node* cur = tail;
+    while (cur != nullptr)
+    {
+        cout << cur->item << " ";
+        cur = cur->prev ;
+    }
+    cout << endl;
 }
 
 #endif //UNTITLED27_DLL_H
