@@ -98,6 +98,7 @@ int main()
                     link.RemoveKey(item);
                     cout << "--Delete Element--\n";
                     link.print();
+                    sz--;
                     break;
                 case 7:
                     cout << "The Linked list before reversed: \n";
@@ -126,34 +127,94 @@ int main()
         cout << "----DLL----" << endl;
         cout << "1.Insert At First. \n";
         cout << "2.Insert At Last. \n";
-        cout << "3.Exist.\n";
+        cout << "3.Insert At pos. \n";
+        cout << "4.remove At first. \n";
+        cout << "5.remove at last. \n";
+        cout << "6.remove key. \n";
+        cout << "7.reverse display. \n";
+        cout << "8.Exist.\n";
         cout << "Input what you want: \n";
         cin >> choice;
         switch (choice)
         {
             case 1:
+                cout << "List Before insert item. \n";
+                DLink.display();
+                cout << "==========================\n";
                 cout << "Input the item want to add in the linked list: \n";
                 cin >> item;
                 DLink.insertAtFirst(item);
                 cout << "--Insert At First--\n";
-                DLink.print();
+                DLink.display();
                 sz++;
                 break;
             case 2:
+                cout << "List Before insert item. \n";
+                DLink.display();
+                cout << "==========================\n";
                 cout << "Input the item want to add in the linked list: \n";
                 cin >> item;
                 DLink.insertAtTail(item);
                 cout << "--Insert At Last--\n";
-                DLink.print();
+                DLink.display();
                 sz++;
                 break;
             case 3:
+                cout << "List Before insert item. \n";
+                DLink.display();
+                cout << "==========================\n";
+                cout << "Input the item want to add in the linked list: \n";
+                cin >> item;
+                cout << "What the Index you want to add th item in: \n";
+                cin >> index;
+                DLink.insertAtPos(index, item);
+                cout << "--Insert At Position--\n";
+                DLink.display();
+                sz++;
+                break;
+            case 4:
+                cout << "List Before delete item. \n";
+                DLink.display();
+                cout << "==========================\n";
+                DLink.removeAtFirst();
+                cout << "--Delete At First--\n";
+                DLink.display();
+                sz--;
+                break;
+            case 5:
+                cout << "List Before delete item. \n";
+                DLink.display();
+                cout << "==========================\n";
+                DLink.removeAtLast();
+                cout << "--Delete At Last--\n";
+                DLink.display();
+                sz--;
+                break;
+            case 6:
+                cout << "List Before delete item. \n";
+                DLink.display();
+                cout << "==========================\n";
+                cout << "Input the item want to delete form the linked list: \n";
+                cin >> item;
+                DLink.removeKey(item);
+                cout << "--Delete Element--\n";
+                DLink.display();
+                sz--;
+                break;
+            case 7:
+                cout << "List Before reverse list. \n";
+                DLink.display();
+                cout << "==========================\n";
+                cout << "--Reverse Display--\n";
+                DLink.reverseDisplay();
+                break;
+            case 8:
                 exit(0);
             default:
                 cout << "Invalid choice. Please try again." << endl;
                 break;
         }
-    } while (choice != 3);
+    } while (choice != 8);
 
     return 0;
 }

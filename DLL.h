@@ -15,7 +15,7 @@ class DLL
 public:
     DLL();
     void insertAtFirst(const T& item);
-    void print();
+    void display();
     void insertAtTail(const T& item);
     void insertAtPos(int pos, const T& item);
     void removeAtFirst();
@@ -58,12 +58,12 @@ void DLL<T>::insertAtFirst(const T &item)
 }
 
 template<typename T>
-void DLL<T>::print()
+void DLL<T>::display()
 {
     Node* cur = head;
     while (cur != nullptr)
     {
-        cout << cur->item << " ";
+        cout << cur->itme << " ";
         cur = cur->next;
     }
     cout << endl;
@@ -210,7 +210,7 @@ void DLL<T>::reverseDisplay()
     Node* cur = tail;
     while (cur != nullptr)
     {
-        cout << cur->item << " ";
+        cout << cur->itme << " ";
         cur = cur->prev ;
     }
     cout << endl;
