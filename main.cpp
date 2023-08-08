@@ -2,13 +2,14 @@
 #include "linkedList.h"
 #include "DLL.h"
 #include "Stack.h"
+#include "StackPointer.h"
 using namespace std;
 
 int main()
 {
     linkedList<int> link;
     DLL<int> DLink;
-    Stack <int> stt;
+    Stack <int> sttArr;
     int sz, items, item, index;
     int repeatChoice = 1;
     int typeLL;
@@ -18,7 +19,7 @@ int main()
     cout << "What the Kind of  you want: \n";
     cout << "1.SLL. \n";
     cout << "2.DLL. \n";
-    cout<<  "3.Stack. \n";
+    cout<<  "3.Stack with array. \n";
     cin >> typeLL;
     while (typeLL != 1 && typeLL != 2 && typeLL !=3)
     {
@@ -238,38 +239,38 @@ int main()
                 {
                     case 1:
                         cout << "stack Before insert item. \n";
-                        stt.print();
+                        sttArr.print();
                         cout << "==========================\n";
                         cout << "Input the item want to add in the stack: \n";
                         cin >> item;
-                        stt.push(item);
+                        sttArr.push(item);
                         cout << "--Push item--\n";
-                        stt.print();
+                        sttArr.print();
                         sz++;
                         break;
                     case 2:
                         cout << "stack Before delete item. \n";
-                        stt.print();
+                        sttArr.print();
                         cout << "==========================\n";
-                        stt.pop();
+                        sttArr.pop();
                         cout << "--pop item--\n";
-                        stt.print();
+                        sttArr.print();
                         sz--;
                         break;
                     case 3:
                         cout << "stack Before delete item. \n";
-                        stt.print();
+                        sttArr.print();
                         cout << "==========================\n";
-                        stt.pop(item);
+                        sttArr.pop(item);
                         cout << "--pop item--\n";
-                        stt.print();
+                        sttArr.print();
                         sz--;
                         break;
                     case 4:
                         cout << "stack items. \n";
-                        stt.print();
+                        sttArr.print();
                         cout << "==========================\n";
-                        stt.getTop();
+                        sttArr.getTop();
                         break;
                     case 5:
                         exit(0);
