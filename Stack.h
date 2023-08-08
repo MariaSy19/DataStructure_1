@@ -11,7 +11,7 @@ public:
     Stack();
     void push (const T& element);
     void pop();
-    void pop(const T& element);
+    void pop( T& element);
     void getTop();
     void print();
     bool isEmpty();
@@ -57,15 +57,17 @@ void Stack<T>::pop()
 }
 
 template<typename T>
-void Stack<T>::pop(const T &element)
+void Stack<T>::pop( T &element)
 {
     if (isEmpty())
     {
         return;
     } else
     {
-        cout << "the element is delete it: " <<  element << endl;
+        element = items[top];
+        cout << "The element is deleted: "<<element <<endl;
         top--;
+
     }
 }
 

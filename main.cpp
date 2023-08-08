@@ -260,9 +260,7 @@ int main()
                         cout << "stack Before delete item. \n";
                         stt.print();
                         cout << "==========================\n";
-                        cout << "Input the item want to add in the stack: \n";
-                        cin >> item;
-                        stt.pop( item);
+                        stt.pop(item);
                         cout << "--pop item--\n";
                         stt.print();
                         sz--;
