@@ -26,14 +26,10 @@ Stack<T>::Stack()
 template<typename T>
 void Stack<T>::push(const T &element)
 {
-    if (isEmpty())
-    {
-        return;
-    } else
-    {
+
         top++;
         items[top] = element;
-    }
+
 }
 
 template<typename T>
@@ -68,7 +64,7 @@ void Stack<T>::pop(const T &element)
         return;
     } else
     {
-        cout << "the element is delete it: " << items[top] = element << endl;
+        cout << "the element is delete it: " <<  element << endl;
         top--;
     }
 }
@@ -93,7 +89,7 @@ void Stack<T>::print()
     {
         cout << items[i] << " ";
     }
-    cout << "]";
+    cout << "]\n";
 }
 
 #endif //UNTITLED27_STACK_H
