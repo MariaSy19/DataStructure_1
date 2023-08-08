@@ -36,7 +36,7 @@ int main()
                 DLink.insertAtTail(items);
             }
         }
-    
+
     while (repeatChoice == 1)
     {
         int choice = 0;
@@ -221,7 +221,19 @@ int main()
             } while (choice != 8);
         } else if (typeLL == 3)
         {
-
+            do {
+                cout << "----Stack----" << endl;
+                cout << "1.push. \n";
+                cout << "2.pop. \n";
+                cout << "3.pop with save. \n";
+                cout << "4.getTop. \n";
+                cout << "5.Remove From last. \n";
+                cout << "6.Remove From Key. \n";
+                cout << "7.Revers linked List.\n";
+                cout << "8.Search an item.\n";
+                cout << "9.Exit.\n";
+                cout << "Input what you want: \n";
+                cin >> choice;
         }
 
         cout << "Do you want to perform more operations? (1: Yes, 0: No): ";

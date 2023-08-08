@@ -13,6 +13,7 @@ public:
     void pop();
     void pop(const T& element);
     void getTop();
+    void print();
     bool isEmpty();
 };
 
@@ -82,6 +83,17 @@ void Stack<T>::getTop()
     {
         cout << "The top of stack is: " <<items[top] <<endl;
     }
+}
+
+template<typename T>
+void Stack<T>::print()
+{
+    cout << "[";
+    for (int i = top; i >=0 ; --i)
+    {
+        cout << items[i] << " ";
+    }
+    cout << "]";
 }
 
 #endif //UNTITLED27_STACK_H
