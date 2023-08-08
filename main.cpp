@@ -1,6 +1,7 @@
 #include <iostream>
 #include "linkedList.h"
 #include "DLL.h"
+#include "Stack.h"
 using namespace std;
 
 int main()
@@ -13,32 +14,29 @@ int main()
 
     cout << "what the size of list you want: \n";
     cin >> sz;
-    cout << "What Kind of Linked list you want: \n";
+    cout << "What the Kind of  you want: \n";
     cout << "1.SLL. \n";
     cout << "2.DLL. \n";
+    cout<<  "3.Stack. \n";
     cin >> typeLL;
-    while (typeLL != 1 && typeLL != 2)
+    while (typeLL != 1 && typeLL != 2 && typeLL !=3)
     {
-        cout << "What Kind of Linked list you want: \n";
+        cout << "What the  Kind of you want: \n";
         cout << "1.SLL. \n";
         cout << "2.DLL. \n";
+        cout<<  "3.Stack. \n";
         cin >> typeLL;
     }
-
-    for (int i = 0; i < sz; ++i)
-    {
-        cout << "Input the value: \n";
-        cin >> items;
-        if (typeLL == 1)
-        {
-            link.insertLast(items);
+        for (int i = 0; i < sz; ++i) {
+            cout << "Input the value: \n";
+            cin >> items;
+            if (typeLL == 1) {
+                link.insertLast(items);
+            } else if (typeLL == 2) {
+                DLink.insertAtTail(items);
+            }
         }
-        else if (typeLL == 2)
-        {
-            DLink.insertAtTail(items);
-        }
-    }
-
+    
     while (repeatChoice == 1)
     {
         int choice = 0;
@@ -221,6 +219,9 @@ int main()
                         break;
                 }
             } while (choice != 8);
+        } else if (typeLL == 3)
+        {
+
         }
 
         cout << "Do you want to perform more operations? (1: Yes, 0: No): ";
