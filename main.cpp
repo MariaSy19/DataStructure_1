@@ -8,6 +8,7 @@ int main()
 {
     linkedList<int> link;
     DLL<int> DLink;
+    Stack <int> stt;
     int sz, items, item, index;
     int repeatChoice = 1;
     int typeLL;
@@ -34,6 +35,9 @@ int main()
                 link.insertLast(items);
             } else if (typeLL == 2) {
                 DLink.insertAtTail(items);
+            } else if (typeLL == 3)
+            {
+                stt.push(items);
             }
         }
 
@@ -227,13 +231,57 @@ int main()
                 cout << "2.pop. \n";
                 cout << "3.pop with save. \n";
                 cout << "4.getTop. \n";
-                cout << "5.Remove From last. \n";
-                cout << "6.Remove From Key. \n";
-                cout << "7.Revers linked List.\n";
-                cout << "8.Search an item.\n";
-                cout << "9.Exit.\n";
+                cout << "5.Exit. \n";
                 cout << "Input what you want: \n";
                 cin >> choice;
+                switch (choice)
+                {
+                    case 1:
+                        cout << "stack Before insert item. \n";
+                        stt.print();
+                        cout << "==========================\n";
+                        cout << "Input the item want to add in the stack: \n";
+                        cin >> item;
+                        stt.push(item);
+                        cout << "--Push item--\n";
+                        stt.print();
+                        sz++;
+                        break;
+                    case 2:
+                        cout << "stack Before delete item. \n";
+                        stt.print();
+                        cout << "==========================\n";
+                        stt.pop();
+                        cout << "--pop item--\n";
+                        stt.print();
+                        sz--;
+                        break;
+                    case 3:
+                        cout << "stack Before delete item. \n";
+                        stt.print();
+                        cout << "==========================\n";
+                        cout << "Input the item want to add in the stack: \n";
+                        cin >> item;
+                        stt.pop( item);
+                        cout << "--pop item--\n";
+                        stt.print();
+                        sz--;
+                        break;
+                    case 4:
+                        cout << "stack items. \n";
+                        stt.print();
+                        cout << "==========================\n";
+                        stt.getTop();
+                        break;
+                    case 5:
+                        exit(0);
+                        break;
+
+                    default:
+                        cout << "Invalid choice. Please try again." << endl;
+                        break;
+                }
+            } while (choice != 5);
         }
 
         cout << "Do you want to perform more operations? (1: Yes, 0: No): ";
