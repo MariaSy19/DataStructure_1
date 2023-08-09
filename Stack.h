@@ -1,6 +1,7 @@
 
 #ifndef UNTITLED27_STACK_H
 #define UNTITLED27_STACK_H
+#include <bits/stdc++.h>
 const int MAX_SIZE = 100;
 template<typename T>
 class Stack
@@ -15,6 +16,8 @@ public:
     void getTop();
     void print();
     bool isEmpty();
+    bool areBalance(string exp);
+    bool arePair(char open, char close);
 };
 
 template<typename T>
@@ -92,6 +95,44 @@ void Stack<T>::print()
         cout << items[i] << " ";
     }
     cout << "]\n";
+}
+
+template<typename T>
+bool Stack<T>::areBalance(string exp)
+{
+    stack<char> st;
+    for (int i = 0; i < exp.length(); ++i)
+    {
+        if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
+        {
+            st.push(exp[i]);
+        } else if (exp[i] == ')' || exp[i] == '}' || exp[i] == ']')
+        {
+            if (st.empty() || !areBalance(st.top(),exp[i]))
+            {
+                return false;
+            } else {
+                st.pop();
+            }
+        }
+    }
+    return st.empty();
+}
+
+template<typename T>
+bool Stack<T>::arePair(char open, char close)
+{
+    if (open == '(' && close == ')')
+    {
+        return true;
+    }else if (open == '{' && close == '}')
+    {
+        return true;
+    } else if (open == '[' && close == ']')
+    {
+        return true;
+    } else
+    return false;
 }
 
 #endif //UNTITLED27_STACK_H
