@@ -4,6 +4,8 @@
 #include "Stack.h"
 #include "StackPointer.h"
 #include "QueueByArr.h"
+#include "QueueByPointer.h"
+#include "LinkedQueue.h"
 using namespace std;
 
 int main()
