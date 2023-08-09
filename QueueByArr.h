@@ -18,6 +18,7 @@ public:
     void addQueue(const T& element);
     void deleteQueue();
     T getFront();
+    T search(const T& element);
     void print();
 };
 
@@ -86,6 +87,32 @@ void QueueByArray<T>::print()
         cout << arr[i]<< " " ;
     }
     cout << arr[rear];
+}
+
+template<typename T>
+T QueueByArray<T>::search(const T& element) {
+    int pos = -1;
+    if (!isEmpty())
+    {
+        for (int i = front; i != rear ; i = (i+1)%MAX_LRNGTH) //loop in queue
+        {
+            if (arr[i] == element) //find the element in the queue
+            {
+                pos = i; // in variable pos save the index of the element
+                break;
+            }
+            if (pos == -1)
+            {
+                if (arr[rear] == element)
+                {
+                    pos = rear;
+                }
+            }
+        }
+    }else
+    {
+        cout << "Queue is Empty Can't Dequeue...! \n";
+    }
 }
 
 #endif //UNTITLED27_QUEUEBYARR_H
