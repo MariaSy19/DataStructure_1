@@ -15,6 +15,10 @@ public:
     bool isEmpty();
     void enqueue(const T& item);
     void dequeue();
+    T getFront();
+    T getBack();
+    void clear();
+    void print();
 };
 
 template<typename T>
@@ -70,5 +74,53 @@ void LinkedQueue<T>::dequeue()
         }
     }
 }
+
+template<typename T>
+T LinkedQueue<T>::getFront() {
+    if (isEmpty())
+    {
+        cout << "Queue is Empty...! \n";
+    } else
+    {
+        return front->item;
+    }
+}
+
+template<typename T>
+T LinkedQueue<T>::getBack() {
+    if (isEmpty())
+    {
+        cout << "Queue is Empty...! \n";
+    } else
+    {
+        return rear->item;
+    }
+}
+
+template<typename T>
+void LinkedQueue<T>::clear()
+{
+    node *curr;
+    while (front != nullptr)
+    {
+        curr = front;
+        front = front->next;
+        delete curr;
+    }
+    rear = nullptr;
+}
+
+template<typename T>
+void LinkedQueue<T>::print()
+{
+    node *curr;
+    while (curr != nullptr)
+    {
+        cout << curr->item << " ";
+        curr = curr->next;
+    }
+    cout << endl;
+}
+
 
 #endif //UNTITLED27_LINKEDQUEUE_H
