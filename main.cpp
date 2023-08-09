@@ -14,6 +14,7 @@ int main()
     DLL<int> DLink;
     Stack <int> sttArr;
     QueueByArray<int> queueArr;
+    LinkedQueue<int> linkQueue;
     int sz, items, item, index;
     int repeatChoice = 1;
     int typeLL;
@@ -25,14 +26,16 @@ int main()
     cout << "2.DLL. \n";
     cout << "3.Stack with array. \n";
     cout <<  "4.Queue by using Array. \n";
+    cout <<  "5.Queue by using Linked list. \n";
     cin >> typeLL;
-    while (typeLL < 0 || typeLL > 4)
+    while (typeLL < 0 || typeLL > 5)
     {
         cout << "What the  Kind of you want: \n";
         cout << "1.SLL. \n";
         cout << "2.DLL. \n";
         cout << "3.Stack with array. \n";
         cout <<  "4.Queue by using Array. \n";
+        cout <<  "5.Queue by using Linked list. \n";
         cin >> typeLL;
     }
         for (int i = 0; i < sz; ++i) {
@@ -48,6 +51,9 @@ int main()
             } else if (typeLL == 4)
             {
                 queueArr.addQueue(items);
+            }else if (typeLL == 5)
+            {
+                linkQueue.enqueue(items);
             }
         }
 
@@ -290,7 +296,7 @@ int main()
                         break;
                 }
             } while (choice != 5);
-        } else if (typeLL == 4)
+        } else if (typeLL == 4 )
         {
             do {
                 cout << "----Queue by using Array----" << endl;
@@ -344,6 +350,66 @@ int main()
                         break;
                 }
             } while (choice != 5);
+        } else if (typeLL == 5)
+        {
+                do {
+                    cout << "----Queue by Linked List----" << endl;
+                    cout << "1.Enqueue element. \n";
+                    cout << "2.Dequeue element. \n";
+                    cout << "3.Get the first element added. \n";
+                    cout << "4.Get the last element added. \n";
+                    cout << "5.clear.\n";
+                    cout << "6.Exit.\n";
+                    cout << "Input what you want: \n";
+                    cin >> choice;
+                    switch (choice) {
+                        case 1:
+                            cout << "Input the item want to add in the Queue: \n";
+                            cin >> item;
+                            cout << "The queue elements before add item. \n";
+                            linkQueue.print();
+                            cout<< "=========================================\n";
+                            linkQueue.enqueue(item);
+                            cout << "--Insert element--\n";
+                            linkQueue.print();
+                            sz++;
+                            break;
+                        case 2:
+                            cout << "The queue elements before delete item: \n";
+                            linkQueue.print();
+                            cout<< "=========================================\n";
+                            linkQueue.dequeue();
+                            cout << "--Delete item --\n";
+                            linkQueue.print();
+                            sz--;
+                            break;
+                        case 3:
+                            cout << "The queue elements: \n";
+                            linkQueue.print();
+                            cout<< "=========================================\n";
+                            linkQueue.getFront();
+                            break;
+                        case 4:
+                            cout << "The queue elements: \n";
+                            linkQueue.print();
+                            cout<< "=========================================\n";
+                            linkQueue.getBack();
+                            break;
+                        case 5:
+                            cout << "The queue elements: \n";
+                            linkQueue.print();
+                            cout<< "=========================================\n";
+                            linkQueue.clear();
+                            sz = 0;
+                            break;
+                        case 6:
+                            exit(0);
+                            break;
+                        default:
+                            cout << "Invalid choice. Please try again." << endl;
+                            break;
+                    }
+                } while (choice != 5);
         }
 
         cout << "Do you want to perform more operations? (1: Yes, 0: No): ";
