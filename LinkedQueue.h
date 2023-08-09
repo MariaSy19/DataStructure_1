@@ -14,6 +14,7 @@ public:
     LinkedQueue();
     bool isEmpty();
     void enqueue(const T& item);
+    void dequeue();
 };
 
 template<typename T>
@@ -45,6 +46,29 @@ void LinkedQueue<T>::enqueue(const T &item)
 template<typename T>
 bool LinkedQueue<T>::isEmpty() {
     return front== nullptr;
+}
+
+template<typename T>
+void LinkedQueue<T>::dequeue()
+{
+    if (isEmpty())
+    {
+        cout << "Queue is Empty Can't Dequeue...! \n";
+    } else
+    {
+        node *temp = front;
+        if (this->front == nullptr) //have just only one element
+        {
+            this->rear = nullptr;
+            count--;
+        } else
+        {
+            front = front->next;
+            temp->next = nullptr;
+            free(temp);
+            count--;
+        }
+    }
 }
 
 #endif //UNTITLED27_LINKEDQUEUE_H
