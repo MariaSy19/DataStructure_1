@@ -103,12 +103,12 @@ bool Stack<T>::areBalance(string exp)
     stack<char> st;
     for (int i = 0; i < exp.length(); ++i)
     {
-        if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
+        if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[') //if we have an open bracelet push in stack
         {
             st.push(exp[i]);
-        } else if (exp[i] == ')' || exp[i] == '}' || exp[i] == ']')
+        } else if (exp[i] == ')' || exp[i] == '}' || exp[i] == ']') // if we have close bracelet
         {
-            if (st.empty() || !areBalance(st.top(),exp[i]))
+            if (st.empty() || !areBalance(st.top(),exp[i])) // check if the stack is empty or not pair
             {
                 return false;
             } else {
@@ -116,7 +116,7 @@ bool Stack<T>::areBalance(string exp)
             }
         }
     }
-    return st.empty();
+    return st.empty(); //finally, check if stack is empty after push and pop from the stack
 }
 
 template<typename T>
