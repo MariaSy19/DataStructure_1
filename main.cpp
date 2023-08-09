@@ -3,6 +3,7 @@
 #include "DLL.h"
 #include "Stack.h"
 #include "StackPointer.h"
+#include "QueueByArr.h"
 using namespace std;
 
 int main()
