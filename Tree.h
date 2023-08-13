@@ -1,6 +1,6 @@
 #ifndef UNTITLED27_TREE_H
 #define UNTITLED27_TREE_H
-
+#include <queue>
 template<typename T>
 class Tree{
     struct node
@@ -14,7 +14,7 @@ public:
     void preOrder(node *el);
     void inOrder(node *el);
     void postOrder(node *el);
-    void levelOrder(node *el);
+    void levelOrder(node *root);
 };
 
 template<typename T>
@@ -55,8 +55,28 @@ void Tree<T>::postOrder(Tree::node *el) // left right root
 }
 
 template<typename T>
-void Tree<T>::levelOrder(Tree::node *el) {
-
+void Tree<T>::levelOrder(Tree::node *root)
+{
+    if (root == nullptr) // in this case we don't have a tree
+    {
+        return;
+    }
+    queue<node *> queue1;
+    queue1.push(root);
+    while (!queue1.empty())
+    {
+        node *curr = queue1.front();
+        cout << curr->item << " ";
+        if (curr->left != nullptr)
+        {
+            queue1.push(curr->left);
+        }
+        if (curr->right != nullptr)
+        {
+            queue1.push(curr->right);
+        }
+        queue1.pop();
+    }
 }
 
 
