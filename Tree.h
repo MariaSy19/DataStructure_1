@@ -34,18 +34,28 @@ void Tree<T>::preOrder(Tree::node *el) // root left right
 template<typename T>
 void Tree<T>::inOrder(Tree::node *el) //left root right
 {
-    if (el != el)
+    if (el != nullptr) //base case
     {
-        inOrder(el->left);
-        cout << el->item << " ";
-        inOrder(el->right);
-        cout << el->item << " ";
+        inOrder(el->left); // visit left subtree
+        cout << el->item << " "; // root
+        inOrder(el->right); // visit right subtree
+        cout << el->item << " "; // root
     }
 }
 
 template<typename T>
-void Tree<T>::postOrder(Tree::node *el) // left right root 
+void Tree<T>::postOrder(Tree::node *el) // left right root
 {
+    if (el != nullptr) //base case
+    {
+        postOrder(el->left); //visit left subtree
+        postOrder(el->right); // visit right subtree
+        cout << el->item << " "; // root
+    }
+}
+
+template<typename T>
+void Tree<T>::levelOrder(Tree::node *el) {
 
 }
 
