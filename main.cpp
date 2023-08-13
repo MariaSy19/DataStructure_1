@@ -6,6 +6,7 @@
 #include "QueueByArr.h"
 #include "QueueByPointer.h"
 #include "LinkedQueue.h"
+#include "Tree.h"
 using namespace std;
 
 int main()
@@ -15,6 +16,7 @@ int main()
     Stack <int> sttArr;
     QueueByArray<int> queueArr;
     LinkedQueue<int> linkQueue;
+    Tree<int> tree;
     int sz, items, item, index;
     int repeatChoice = 1;
     int typeLL;
@@ -27,8 +29,9 @@ int main()
     cout << "3.Stack with array. \n";
     cout <<  "4.Queue by using Array. \n";
     cout <<  "5.Queue by using Linked list. \n";
+    cout <<  "6.Tree \n";
     cin >> typeLL;
-    while (typeLL < 0 || typeLL > 5)
+    while (typeLL < 0 || typeLL > 6)
     {
         cout << "What the  Kind of you want: \n";
         cout << "1.SLL. \n";
@@ -36,6 +39,7 @@ int main()
         cout << "3.Stack with array. \n";
         cout <<  "4.Queue by using Array. \n";
         cout <<  "5.Queue by using Linked list. \n";
+        cout <<  "6.Tree \n";
         cin >> typeLL;
     }
         for (int i = 0; i < sz; ++i) {
@@ -54,6 +58,9 @@ int main()
             }else if (typeLL == 5)
             {
                 linkQueue.enqueue(items);
+            }else if (typeLL == 6)
+            {
+                tree.
             }
         }
 

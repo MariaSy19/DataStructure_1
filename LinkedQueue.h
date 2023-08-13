@@ -113,7 +113,7 @@ void LinkedQueue<T>::clear()
 template<typename T>
 void LinkedQueue<T>::print()
 {
-    node *curr;
+    node *curr = front; // Initialize curr to the front of the queue
     while (curr != nullptr)
     {
         cout << curr->item << " ";

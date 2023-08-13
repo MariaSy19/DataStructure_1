@@ -163,8 +163,8 @@ void linkedList<T>::RemoveKey(const T& element)
     while (curr != nullptr && curr->item == element)
     {
         first = curr->next;
-        delete curr;
         curr = first;
+        delete curr;
         length--;
     }
 
