@@ -266,12 +266,57 @@ int BST<T>::nodeCount(BST::node *ptr) {
 
 template<typename T>
 int BST<T>::leavesCount(BST::node *ptr) {
-    return 0;
+    if (ptr == nullptr)
+    {
+        return 0;
+    } else if ((ptr->left == nullptr) && (ptr->right == nullptr))
+        return 1; // the tree have a only root
+    else
+        return leavesCount(ptr->left) + leavesCount(ptr->right);
 }
 
 template<typename T>
-bool BST<T>::searchRecPriv(BST::node *, int) {
-    return false;
+bool BST<T>::searchRecPriv(BST::node *ptr, int item)
+{
+    if (ptr == nullptr) // we've reached a leaf node and the item was not found,
+    {
+        return false;
+    }else if (ptr->item == item) // we found the item in the BST.
+    {
+        return true;
+    } else if (ptr->item > item)
+    {
+        return searchRecPriv(ptr->left, item);
+    }else
+    {
+        return searchRecPriv(ptr->right, item);
+    }
+}
+
+template<typename T>
+bool BST<T>::search(const T& item)
+{
+    node * curr = root;
+    while (curr != nullptr)
+    {
+        if(curr->item == item)
+            return true;
+        else if (curr->item > item) // the value of the current node greater than item
+        {
+            //so we check in the left subtree
+            curr = curr->left;
+        } else
+        {
+            //anotherWise, we check in the right subtree
+            curr = curr->right;
+        }
+    }
+}
+
+template<typename T>
+bool BST<T>::searchRec(const T& item)
+{
+    return searchRecPriv(root,item);
 }
 
 
